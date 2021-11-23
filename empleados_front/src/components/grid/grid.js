@@ -15,18 +15,23 @@ export default class DataGrid extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-        rows:[]
+      rows: []
     };
   }
-  getData(){
+  componentDidMount() {
+    this.getData();
+  }
+  getData() {
     request
-    .get('this.props.url')
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
+      .get(this.props.url)
+      .then((response) => {
+        this.setState({
+          rows: response.data
+        });
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
   render() {
     const options = {

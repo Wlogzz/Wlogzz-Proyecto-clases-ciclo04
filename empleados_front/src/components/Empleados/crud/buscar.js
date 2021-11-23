@@ -1,15 +1,16 @@
 import React from 'react';
-import { request } from '../helper/helpers';
+import { request } from '../../helper/helpers';
 import { Container, Row, Col } from 'react-bootstrap';
 
-import './empleados.css';
-import DataGrid from '../grid/grid';
+// import './empleados.css';
+import DataGrid from '../../grid/grid';
 
 
 const columns = [
   {
     dataField: '_id',
     text: 'Id',
+    hidden: true,
   },
   {
     dataField: 'nombre',
@@ -25,7 +26,7 @@ const columns = [
   },
   {
     dataField: 'telefono',
-    text: 'Telefono',
+    text: 'Teléfono',
   },
   {
     dataField: 'mail',
@@ -33,7 +34,7 @@ const columns = [
   },
   {
     dataField: 'direccion',
-    text: 'Direccion',
+    text: 'Dirección',
   },
 ];
 
