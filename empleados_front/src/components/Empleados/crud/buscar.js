@@ -18,11 +18,11 @@ const columns = [
   },
   {
     dataField: 'apellido_p',
-    text: 'Apellido_p',
+    text: 'Apellido Paterno',
   },
   {
     dataField: 'apellido_m',
-    text: 'Apellido_m',
+    text: 'Apellido Materno',
   },
   {
     dataField: 'telefono',
