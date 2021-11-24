@@ -16,10 +16,17 @@
   float: right;
   padding-bottom: 10px;
 }
+
 .sr-only {
   font-size: 0;
 }
+
 #empleados-crear-container .form-label {
   float: left;
   margin-bottom: 10px;
+}
+
+#empleados-crear-container #btn-enviar {
+  margin-top: 20px;
+  margin-bottom: 30px;
 }

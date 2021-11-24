@@ -101,7 +101,7 @@ export default class EmpleadosCrear extends React.Component {
                             <Form.Control onChange={(e) => this.setValue('direccion', e.target.value)} />
                         </Form.Group>
 
-                        <Button variant="primary" onClick={() => console.log(this.guardarEmpleados())}>
+                        <Button id="btn-enviar" variant="primary" onClick={() => console.log(this.guardarEmpleados())}>
                             Guardar Empleado
                         </Button>
                     </Form>
