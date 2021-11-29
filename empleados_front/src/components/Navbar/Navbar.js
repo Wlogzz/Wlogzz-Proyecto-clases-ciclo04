@@ -32,7 +32,7 @@ export default class NavBar extends React.Component {
                                 </Row>
                             </Dropdown.Header>
                             <Dropdown.Divider />
-                            <Dropdown.Item href="#/action-1">Cerrar Sesión</Dropdown.Item>
+                            <Dropdown.Item id="cerrar-sesion" href="#/action-1">Cerrar Sesión</Dropdown.Item>
                         </DropdownButton>
                     </Navbar.Collapse>
                 </Container>
