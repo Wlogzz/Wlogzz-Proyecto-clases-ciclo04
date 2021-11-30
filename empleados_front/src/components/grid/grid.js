@@ -12,8 +12,7 @@ import { request } from '../helper/helpers';
 import Loading from '../Loading/Loading';
 import Button from '@restart/ui/esm/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { isUndefined } from 'util';
 
 const { SearchBar } = Search;
@@ -26,6 +25,10 @@ export default class DataGrid extends React.Component {
     };
     if (this.props.showEditButton && !this.existsColumn('editar'))
       this.props.columns.push(this.getEditButton());
+
+    if (this.props.showDeleteButton && !this.existsColumn('eliminar'))
+      this.props.columns.push(this.getDeleteButton());
+
   }
   componentDidMount() {
     this.getData();
@@ -62,6 +65,18 @@ export default class DataGrid extends React.Component {
       },
     };
   }
+  getDeleteButton() {
+    return {
+      text: 'eliminar',
+      formatter: (cell, row) => {
+        return (<Button onClick={() => this.props.onClickDeleteButton(row)}>
+          <FontAwesomeIcon icon={faTrash} />
+        </Button>
+        )
+      },
+    };
+  }
+
   render() {
     const options = {
       custom: true,

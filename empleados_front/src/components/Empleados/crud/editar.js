@@ -16,9 +16,9 @@ export default class EmpleadosEditar extends React.Component {
                 show: false,
             },
             confirmation: {
+                title: 'Modificar empleado',
+                text: 'Desea modificar el empleado?',
                 show: false,
-                title: '',
-                text: '',
             },
             loading: false,
             empleado: {
@@ -31,6 +31,8 @@ export default class EmpleadosEditar extends React.Component {
             },
         };
         this.onExitedMessage = this.onExitedMessage.bind(this);
+        this.onCancel = this.onCancel.bind(this);
+        this.onConfirm = this.onConfirm.bind(this);
     }
     componentDidMount() {
         this.getEmpleado();
@@ -83,10 +85,22 @@ export default class EmpleadosEditar extends React.Component {
         if (this.state.rediret) this.props.changeTab('buscar');
     }
     onCancel() {
-
+        this.setState({
+            confirmation: {
+                ...this.state.confirmation,
+                show: false,
+            },
+        });
     }
     onConfirm() {
-
+        this.setState({
+            confirmation: {
+                ...this.state.confirmation,
+                show: false,
+            },
+        },
+            this.guardarEmpleados()
+        );
     }
     render() {
         return (
@@ -97,11 +111,11 @@ export default class EmpleadosEditar extends React.Component {
                     onExited={this.onExitedMessage}
                 />
                 <ConfirmationProps
-                    show={true}
-                    title=''
-                    text=''
-                    onCancel={() => console.log('Cancelar')}
-                    onConfirm={() => console.log('Aceptar')}
+                    show={this.state.confirmation.show}
+                    title={this.state.confirmation.title}
+                    text={this.state.confirmation.text}
+                    onCancel={this.onCancel}
+                    onConfirm={this.onConfirm}
                 />
                 <Loading show={this.state.loading} />
                 <Row>
@@ -151,7 +165,9 @@ export default class EmpleadosEditar extends React.Component {
                                 onChange={(e) => this.setValue('direccion', e.target.value)} />
                         </Form.Group>
 
-                        <Button id="btn-enviar" variant="primary" onClick={() => console.log(this.guardarEmpleados())}>
+                        <Button id="btn-enviar" variant="primary" onClick={() => this.setState({
+                            confirmation: { ...this.state.confirmation, show: true },
+                        })}>
                             Guardar Empleado
                         </Button>
                     </Form>
